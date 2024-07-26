@@ -1,0 +1,78 @@
+<div class="role-list-container">
+  <h2>Role List</h2>
+  <table class="role-table table table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let role of roles">
+      <td>{{ role.id }}</td>
+      <td>{{ role.name }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="openModal(role)" data-bs-toggle="modal" data-bs-target="#exampleModal">View Authorities</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="add-role-container">
+    <input type="text" placeholder="New Role Name" [(ngModel)]="newRoleName">
+    <button class="btn btn-success" (click)="addRole()">Add Role</button>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ selectedRole?.name }} Authorities</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Authority</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let authority of selectedRole?.authorities">
+              <td>{{ authority.name }}</td>
+              <td>
+                <button class="btn btn-danger" (click)="removeAuthorityFromRole(authority.name)">Delete</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+          <h5>Available Authorities</h5>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Authority</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let authority of availableAuthorities">
+              <td>{{ authority.name }}</td>
+              <td>
+                <button class="btn btn-primary" (click)="addAuthorityToRoleWithButton(authority.name)">Add</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

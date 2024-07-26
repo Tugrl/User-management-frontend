@@ -1,0 +1,42 @@
+<div class="parent">
+  <div class="container">
+    <div class="register-box">
+      <h2>Register</h2>
+      <form (ngSubmit)="onRegister()">
+        <div class="input-box">
+          <input type="text" required [(ngModel)]="registerData.name" name="name">
+          <label>Name</label>
+        </div>
+        <div class="input-box">
+          <input type="text" required [(ngModel)]="registerData.surname" name="surname">
+          <label>Surname</label>
+        </div>
+        <div class="input-box">
+          <input type="text" required [(ngModel)]="registerData.identityNumber" name="identityNumber">
+          <label>Identity Number</label>
+        </div>
+        <div class="input-box">
+          <input type="date" required [(ngModel)]="registerData.birthDate" name="birthDate">
+          <label>Birth Date</label>
+        </div>
+        <div class="input-box">
+          <input type="number" required [(ngModel)]="registerData.salary" name="salary">
+          <label>Salary</label>
+        </div>
+        <div class="input-box">
+          <input type="email" required [(ngModel)]="registerData.email" name="email">
+          <label>Email</label>
+        </div>
+        <div class="input-box">
+          <input type="text" required [(ngModel)]="registerData.username" name="username">
+          <label>Username</label>
+        </div>
+        <div class="input-box">
+          <input type="password" required [(ngModel)]="registerData.password" name="password">
+          <label>Password</label>
+        </div>
+        <button type="submit" class="btn">Register</button>
+      </form>
+    </div>
+  </div>
+</div>
