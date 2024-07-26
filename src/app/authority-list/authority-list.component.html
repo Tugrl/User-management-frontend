@@ -1,0 +1,20 @@
+<div class="authority-list-container">
+  <h2>Authority List</h2>
+  <table class="authority-table">
+    <thead> <tr>
+      <th>ID</th>
+      <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let authority of authorities">
+      <td>{{authority.id}}</td>
+      <td>{{authority.name}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="add-role-container">
+    <input type="text" placeholder="New Role Name" [(ngModel)]="newAuthorityName">
+    <button (click)="addAuthority()">Add Role</button>
+  </div>
+</div>

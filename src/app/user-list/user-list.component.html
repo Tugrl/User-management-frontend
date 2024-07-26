@@ -1,0 +1,108 @@
+<!-- Edit User Modal -->
+<div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="userName" class="form-label">Name</label>
+            <input type="text" id="userName" [(ngModel)]="selectedUser.name" name="name" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="userSurname" class="form-label">Surname</label>
+            <input type="text" id="userSurname" [(ngModel)]="selectedUser.surname" name="surname" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="userEmail" class="form-label">Email</label>
+            <input type="email" id="userEmail" [(ngModel)]="selectedUser.email" name="email" class="form-control">
+          </div>
+<!--          <div class="mb-3">-->
+<!--            <label for="identityNumber" class="form-label">Identity Number</label>-->
+<!--            <input type="text" id="identityNumber" [(ngModel)]="selectedUser.identityNumber" name="identityNumber" class="form-control">-->
+<!--          </div>-->
+<!--          <div class="mb-3">-->
+<!--            <label for="salary" class="form-label">Salary</label>-->
+<!--            <input type="number" id="salary" [(ngModel)]="selectedUser.salary" name="salary" class="form-control">-->
+<!--          </div>-->
+          <div class="mb-3">
+            <label for="birthDate" class="form-label">Birth Date</label>
+            <input type="date" id="birthDate" [(ngModel)]="selectedUser.birthDate" name="birthDate" class="form-control">
+          </div>
+<!--          <div class="mb-3">-->
+<!--            <label for="username" class="form-label">Username</label>-->
+<!--            <input type="text" id="userUsername" [(ngModel)]="selectedUser.username" name="username" class="form-control">-->
+<!--          </div>-->
+<!--          <div class="mb-3">-->
+<!--            <label for="password" class="form-label">Password</label>-->
+<!--            <input type="password" id="password" [(ngModel)]="selectedUser.password" name="password" class="form-control">-->
+<!--          </div>-->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="updateUserWithPatch()" data-bs-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="user-list">
+  <h2>User List</h2>
+  <div class="search-container">
+    <input type="text" placeholder="Name" [(ngModel)]="searchParams.name">
+    <input type="text" placeholder="Surname" [(ngModel)]="searchParams.surname">
+    <input type="text" placeholder="Identity Number" [(ngModel)]="searchParams.identityNumber">
+    <input type="text" placeholder="Birth Date" [(ngModel)]="searchParams.birthDate">
+    <input type="text" placeholder="Salary" [(ngModel)]="searchParams.salary">
+    <input type="text" placeholder="Email" [(ngModel)]="searchParams.email">
+    <input type="text" placeholder="Username" [(ngModel)]="searchParams.username">
+    <button (click)="onSearch()">Search</button>
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th (click)="sort('id')">ID</th>
+      <th (click)="sort('name')">Name</th>
+      <th (click)="sort('surname')">Surname</th>
+      <th (click)="sort('identityNumber')">Identity Number</th>
+      <th (click)="sort('birthDate')">Birth Date</th>
+      <th (click)="sort('salary')">Salary</th>
+      <th (click)="sort('email')">Email</th>
+      <th (click)="sort('username')">Username</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.surname }}</td>
+      <td>{{ user.identityNumber }}</td>
+      <td>{{ user.birthDate }}</td>
+      <td>{{ user.salary }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.username }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="editUser(user)" data-bs-toggle="modal" data-bs-target="#editUserModal">Edit</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 0">Previous</button>
+    <button (click)="nextPage()" [disabled]="(currentPage + 1) * pageSize >= totalElements">Next</button>
+  </div>
+  <div class="roles-button">
+    <button (click)="viewRoles()">View All Roles</button>
+  </div>
+</div>
