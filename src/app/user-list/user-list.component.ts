@@ -102,22 +102,12 @@ export class UserListComponent implements OnInit {
   }
 
 updateUserWithPatch() {
-    if(this.selectedUser.name) {
-      this.updates.name=this.selectedUser.name;
-    }
-    if (this.selectedUser.surname) {
-      this.updates.surname=this.selectedUser.surname;
-    }
-    if(this.selectedUser.email) {
-      this.updates.email=this.selectedUser.email;
-    }
-    if(this.updates.birthDate) {
-      this.updates.birthDate=this.selectedUser.birthDate;
-    }
+    if(this.selectedUser.name) {this.updates.name=this.selectedUser.name;}
+    if (this.selectedUser.surname) {this.updates.surname=this.selectedUser.surname;}
+    if(this.selectedUser.email) {this.updates.email=this.selectedUser.email;}
+    if(this.updates.birthDate) {this.updates.birthDate=this.selectedUser.birthDate;}
     this.userService.updateUserWithPatch(this.selectedUser.id,this.updates).subscribe(() =>
-    {
-      this.getUsersWithPagination();
-    },
+    {this.getUsersWithPagination();},
       error => {
       console.error("Something is wrong with updating action");
       })
