@@ -12,11 +12,6 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   updateUser(user: User): Observable<User> {
-    return this.http.patch<User>(`${this.baseUrl}/${user.id}`, user);
-  }
-
-  updateUserWithPatch(id:string,updates:any):Observable<any> {
-    return this.http.patch(`${this.baseUrl}/${id}`, updates);
   }
 
   getUsersWithPagination(page: number, size: number, searchParams: any): Observable<any> {

@@ -7,7 +7,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 //import {EditUserModalComponent} from "../edit-user-modal/edit-user-modal.component";
 import {User} from "../model/user.model";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-user-list',
@@ -35,7 +34,6 @@ export class UserListComponent implements OnInit {
     username: '',
     password: ''
   };
-  updates:any={};
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -100,17 +98,4 @@ export class UserListComponent implements OnInit {
       console.error('Error updating user', error);
     });
   }
-
-updateUserWithPatch() {
-    if(this.selectedUser.name) {this.updates.name=this.selectedUser.name;}
-    if (this.selectedUser.surname) {this.updates.surname=this.selectedUser.surname;}
-    if(this.selectedUser.email) {this.updates.email=this.selectedUser.email;}
-    if(this.updates.birthDate) {this.updates.birthDate=this.selectedUser.birthDate;}
-    this.userService.updateUserWithPatch(this.selectedUser.id,this.updates).subscribe(() =>
-    {this.getUsersWithPagination();},
-      error => {
-      console.error("Something is wrong with updating action");
-      })
-}
-
 }
