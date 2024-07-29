@@ -1,4 +1,3 @@
-<!-- Edit User Modal -->
 <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -20,31 +19,15 @@
             <label for="userEmail" class="form-label">Email</label>
             <input type="email" id="userEmail" [(ngModel)]="selectedUser.email" name="email" class="form-control">
           </div>
-<!--          <div class="mb-3">-->
-<!--            <label for="identityNumber" class="form-label">Identity Number</label>-->
-<!--            <input type="text" id="identityNumber" [(ngModel)]="selectedUser.identityNumber" name="identityNumber" class="form-control">-->
-<!--          </div>-->
-<!--          <div class="mb-3">-->
-<!--            <label for="salary" class="form-label">Salary</label>-->
-<!--            <input type="number" id="salary" [(ngModel)]="selectedUser.salary" name="salary" class="form-control">-->
-<!--          </div>-->
           <div class="mb-3">
             <label for="birthDate" class="form-label">Birth Date</label>
             <input type="date" id="birthDate" [(ngModel)]="selectedUser.birthDate" name="birthDate" class="form-control">
           </div>
-<!--          <div class="mb-3">-->
-<!--            <label for="username" class="form-label">Username</label>-->
-<!--            <input type="text" id="userUsername" [(ngModel)]="selectedUser.username" name="username" class="form-control">-->
-<!--          </div>-->
-<!--          <div class="mb-3">-->
-<!--            <label for="password" class="form-label">Password</label>-->
-<!--            <input type="password" id="password" [(ngModel)]="selectedUser.password" name="password" class="form-control">-->
-<!--          </div>-->
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="updateUserWithPatch()" data-bs-dismiss="modal">Save changes</button>
+        <button type="button" class="btn btn-primary" (click)="saveUser()" data-bs-dismiss="modal">Save changes</button>
       </div>
     </div>
   </div>
